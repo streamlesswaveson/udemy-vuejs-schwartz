@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <!-- adding the v-once attribute prevents the 'title' property here from changing -->
+    <h1 v-once>{{title}}</h1>
+
+    <input type="text" v-on:input="changeTitle">
+
+    <!-- can't use {{}} syntax in a element attribute -->
+    <!--<p>{{ title }} - <a href="{{link}}">{{title}} again</a> </p>-->
+
+    <!-- this is the proper way to do it -->
+    <p>{{ title }} - <a v-bind:href="link">{{title}} again</a> </p>
+
+    <p>{{ thisWorksToo()}}</p>
+    <hr/>
+
+    <h5>this renders the escaped version of the link</h5>
+    <p>
+        {{finishedLink}}
+    </p>
+
+    <!-- this will render the link -->
+    <p v-html="finishedLink"></p>
+
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello World!',
+            link: 'https://duckduckgo.com',
+            finishedLink: '<a href="https://duckduckgo.com">DuckDuckGo</a>'
+        },
+        methods: {
+            thisWorksToo: function() {
+                return this.anotherMethod();
+            },
+            changeTitle: function(event) {
+                // vuejs proxies the value from the data object using 'this'
+                this.title = event.target.value;
+            },
+            anotherMethod: function() {
+                return 'another method value';
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
