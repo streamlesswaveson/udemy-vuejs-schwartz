@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase Second</button>
+
+    <p>Counter {{counter}} | Second Counter {{secondCounter}}</p>
+    <p>Result {{result()}} | {{output}}</p>
+</div>
+
+
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            counter: 0,
+            secondCounter: 0
+        },
+        // always need to run SYNCHRONOUSLY
+        computed: {
+            // output can be treated like a property when in the 'computed' context
+            // this code gets cached - will not re-evaluate when, say, the 'secondCounter' is updated.
+            output: function () {
+                console.log('computed');
+                return this.counter > 5 ? 'Greater than 5' : 'Less than 5';
+            }
+        },
+        watch: {
+            // method name MATCHES a data property, 'counter' in this case
+            counter: function (value) {
+                var vm = this;
+                setTimeout(function () {
+                    vm.counter = 0;
+                },2000)
+            }
+        },
+        methods: {
+            // this code gets re-evaluated when the dom is updated. This WILL get re-evaluated when 'secondCounter' is updated
+            result: function () {
+                console.log('method');
+                return this.counter > 5 ? 'Greater than 5' : 'Less than 5';
+            }
+        }
+    })
+</script>
+</body>
+</html>

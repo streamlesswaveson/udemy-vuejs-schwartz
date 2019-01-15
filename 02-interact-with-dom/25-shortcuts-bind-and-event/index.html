@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <button @click="changeLink">Change LInk</button>
+    <a :href="link">Link</a>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data : {
+            link: 'http://google.com'
+        },
+        methods: {
+            changeLink: function () {
+                this.link = 'http://apple.com'
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
