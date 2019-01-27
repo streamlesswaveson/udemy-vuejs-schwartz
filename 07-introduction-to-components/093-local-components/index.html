@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app1">
+
+    <my-cmp></my-cmp>
+    <hr>
+    <my-cmp></my-cmp>
+
+</div>
+
+<div id="app2">
+
+    <my-cmp></my-cmp>
+    <hr>
+    <my-cmp></my-cmp>
+
+</div>
+
+<script>
+
+    var myCmp =  {
+        data: function () {
+            return {
+                status: 'critical'
+            }
+        },
+        template: '<p> Server status is {{status}}</p>'
+    };
+
+    new Vue({
+        el:"#app1",
+        // local registration
+        components: {
+            'my-cmp': myCmp
+        }
+    });
+
+
+    // component not available for app2
+    new Vue({
+        el:"#app2"
+    })
+</script>
+
+</body>
+</html>
