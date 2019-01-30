@@ -5,6 +5,8 @@
         <p>User name: {{name}}</p>
         <p>Switched name: {{switchName()}}</p>
         <p>Other Name: {{otherName}}</p>
+
+        <button @click="resetName">Reset Name</button>
     </div>
 </template>
 
@@ -37,6 +39,10 @@
             switchName() {
                 // you can access the name property like any other
                 return this.name.split("").reverse().join("");
+            },
+            resetName() {
+                this.name = 'Streamless';
+                this.$emit('nameWasChanged', this.name);
             }
         }
     }
