@@ -4,6 +4,7 @@
         <p>Many Details</p>
         <p>User name: {{name}}</p>
         <p>Switched name: {{switchName()}}</p>
+        <p>Other Name: {{otherName}}</p>
     </div>
 </template>
 
@@ -11,7 +12,27 @@
     export default {
         // props - properties that can be set from outside
         // these must match the properties used in the template
-        props: ['name'],
+        // props: ['name'],
+        props: {
+            // validation - this can also be an array of types - e.g. [String,Array]
+            name: {
+                type: String,
+                required: true
+            },
+            otherName: {
+                type: String,
+                default: 'waveson'
+            },
+            someObj: {
+                type: Object,
+                // always a function returning the default object
+                default: function () {
+                    return {
+                        'default':'something'
+                    }
+                }
+            }
+        },
         methods: {
             switchName() {
                 // you can access the name property like any other
