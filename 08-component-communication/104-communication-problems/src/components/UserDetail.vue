@@ -6,7 +6,11 @@
         <p>Switched name: {{switchName()}}</p>
         <p>Other Name: {{otherName}}</p>
 
-        <button @click="resetName">Reset Name</button>
+        <!-- child-parent communication via custom event -->
+        <button @click="resetName">Reset Name (custom event)</button>
+
+        <!-- child-parent communication through 'prop' function -->
+        <button @click="resetFn">Reset Name (resetFn)</button>
     </div>
 </template>
 
@@ -21,6 +25,7 @@
                 type: String,
                 required: true
             },
+            resetFn: Function,
             otherName: {
                 type: String,
                 default: 'waveson'

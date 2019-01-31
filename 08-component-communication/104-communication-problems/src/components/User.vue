@@ -7,7 +7,11 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <!-- use v-bind:name or just :name -->
-                <app-user-detail v-bind:name="name" @nameWasChanged="name = $event"></app-user-detail>
+                <app-user-detail
+                        v-bind:name="name"
+                        @nameWasChanged="name = $event"
+                        :resetFn="resetName"
+                ></app-user-detail>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <app-user-edit></app-user-edit>
@@ -29,6 +33,9 @@
         methods: {
             changeMyName() {
                 this.name = 'Josephine';
+            },
+            resetName() {
+                this.name = 'Streamless';
             }
         },
         components: {
