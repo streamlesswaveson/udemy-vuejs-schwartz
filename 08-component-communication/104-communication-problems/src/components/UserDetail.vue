@@ -5,6 +5,7 @@
         <p>User name: {{name}}</p>
         <p>Switched name: {{switchName()}}</p>
         <p>Other Name: {{otherName}}</p>
+        <p>User Age: {{userAge}}</p>
 
         <!-- child-parent communication via custom event -->
         <button @click="resetName">Reset Name (custom event)</button>
@@ -15,12 +16,14 @@
 </template>
 
 <script>
+    import {eventBus} from '../main';
     export default {
         // props - properties that can be set from outside
         // these must match the properties used in the template
         // props: ['name'],
         props: {
             // validation - this can also be an array of types - e.g. [String,Array]
+            userAge: Number,
             name: {
                 type: String,
                 required: true
@@ -49,6 +52,12 @@
                 this.name = 'Streamless';
                 this.$emit('nameWasChanged', this.name);
             }
+        },
+        // one of the lifecycle hooks
+        created() {
+            eventBus.$on('ageWasEdited', (data) => {
+                this.userAge = data;
+            })
         }
     }
 </script>

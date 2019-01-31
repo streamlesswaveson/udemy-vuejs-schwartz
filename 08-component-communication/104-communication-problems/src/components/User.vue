@@ -2,6 +2,7 @@
     <div class="component">
         <h1>The User Component</h1>
         <p>I'm an awesome User!</p>
+        <p>User age: {{age}}</p>
         <button @click="changeMyName">Change My Name</button>
         <hr>
         <div class="row">
@@ -11,10 +12,11 @@
                         v-bind:name="name"
                         @nameWasChanged="name = $event"
                         :resetFn="resetName"
+                        :userAge="age"
                 ></app-user-detail>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <app-user-edit></app-user-edit>
+                <app-user-edit :userAge="age"></app-user-edit>
             </div>
         </div>
     </div>
@@ -27,7 +29,8 @@
     export default {
         data: function(){
             return {
-                name: "streamless"
+                name: "streamless",
+                age: 34
             };
         },
         methods: {
