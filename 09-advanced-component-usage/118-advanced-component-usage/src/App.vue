@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-xs-12">
                <app-quote>
-                   <h1>The quote</h1>
+                   <!-- note the binding still works with the slot managed html -->
+                   <h1>{{quoteTitle}}</h1>
                    <p>Hey some quote!</p>
                </app-quote>
             </div>
@@ -14,6 +15,11 @@
 <script>
     import Quote from './components/Quote.vue'
     export default {
+        data: function() {
+            return {
+                quoteTitle: 'the quote title'
+            }
+        },
         components: {
             appQuote: Quote
         }

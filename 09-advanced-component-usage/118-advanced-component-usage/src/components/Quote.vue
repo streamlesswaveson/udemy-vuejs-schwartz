@@ -22,4 +22,9 @@
         text-align: center;
 
     }
+
+    /* the styling will change the slot managed html also */
+    h1 {
+        color: red;
+    }
 </style>
