@@ -1,12 +1,13 @@
 <template>
     <div>
-        <p>Some quote!</p>
+        <p>{{quote}} </p>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Quote"
+        name: "Quote",
+        props: ['quote']
     }
 </script>
 
