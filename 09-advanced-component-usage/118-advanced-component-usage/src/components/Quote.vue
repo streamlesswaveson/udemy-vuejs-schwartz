@@ -3,6 +3,8 @@
         <!-- slot is a reserved tag/word in vuejs -->
             <div class="title">
                 <slot name="title"></slot>
+                <!-- the 'The Subtitle' text is the default content when the calling component does not provide any -->
+                <span class="subtitle"><slot name="subtitle">The Subtitle</slot></span>
             </div>
 
         <hr>
@@ -35,5 +37,9 @@
 
     .title {
         font-style: italic;
+    }
+    .subtitle {
+        color: #73AD21;
+        font-weight: bold;
     }
 </style>
