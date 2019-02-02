@@ -16,6 +16,12 @@
         },
         destroyed() {
             console.log('AppNew destroyed');
+        },
+        deactivated() {
+            console.log('AppNew deactivated');
+        },
+        activated() {
+            console.log('AppNew activated');
         }
     }
 </script>
