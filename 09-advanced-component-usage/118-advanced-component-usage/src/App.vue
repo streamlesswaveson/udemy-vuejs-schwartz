@@ -8,15 +8,18 @@
                 <hr>
                 <p>{{selectedComponent}}</p>
 
-                <!-- component is a reserved word -->
-                <component :is="selectedComponent">
-                    <p>Default content</p>
-                </component>
-               <!--<app-quote>-->
-                   <!--&lt;!&ndash; note the binding still works with the slot managed html &ndash;&gt;-->
-                   <!--<h1 slot="title">{{quoteTitle}}</h1>-->
-                   <!--<p slot="content">Hey some quote!</p>-->
-               <!--</app-quote>-->
+                <!-- key-alive is a reserved word.  Wrapping the component will prevent it's destruction -->
+                <keep-alive>
+                    <!-- component is a reserved word -->
+                    <component :is="selectedComponent">
+                        <p>Default content</p>
+                    </component>
+                </keep-alive>
+                <!--<app-quote>-->
+                <!--&lt;!&ndash; note the binding still works with the slot managed html &ndash;&gt;-->
+                <!--<h1 slot="title">{{quoteTitle}}</h1>-->
+                <!--<p slot="content">Hey some quote!</p>-->
+                <!--</app-quote>-->
             </div>
         </div>
     </div>
@@ -28,7 +31,7 @@
     import AppNew from "./components/AppNew.vue";
 
     export default {
-        data: function() {
+        data: function () {
             return {
                 quoteTitle: 'the quote title',
                 selectedComponent: 'appQuote'
