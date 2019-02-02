@@ -1,9 +1,14 @@
 <template>
     <div>
         <!-- slot is a reserved tag/word in vuejs -->
-        <slot>
+            <div class="title">
+                <slot name="title"></slot>
+            </div>
 
-        </slot>
+        <hr>
+        <div>
+            <slot name="content"></slot>
+        </div>
     </div>
 </template>
 
@@ -26,5 +31,9 @@
     /* the styling will change the slot managed html also */
     h1 {
         color: red;
+    }
+
+    .title {
+        font-style: italic;
     }
 </style>

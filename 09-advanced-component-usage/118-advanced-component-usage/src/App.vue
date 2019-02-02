@@ -4,8 +4,8 @@
             <div class="col-xs-12">
                <app-quote>
                    <!-- note the binding still works with the slot managed html -->
-                   <h1>{{quoteTitle}}</h1>
-                   <p>Hey some quote!</p>
+                   <h1 slot="title">{{quoteTitle}}</h1>
+                   <p slot="content">Hey some quote!</p>
                </app-quote>
             </div>
         </div>
