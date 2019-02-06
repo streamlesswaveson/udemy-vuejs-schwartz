@@ -18,6 +18,8 @@
                 <p v-highlight3:background="'orange'">Highlight Three, using background arg</p>
                 <p v-highlight3="'orange'">Highlight Three, no arg</p>
 
+                <p v-highlight4:background.delayed="'blue'">Highlight Four, with delay modifier</p>
+
             </div>
         </div>
     </div>
