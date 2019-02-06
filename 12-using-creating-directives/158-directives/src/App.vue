@@ -15,6 +15,9 @@
                 <p v-highlight>Highlight this</p>
                 <p v-highlight2="'red'">Highlight Two, using binding.value</p>
 
+                <p v-highlight3:background="'orange'">Highlight Three, using background arg</p>
+                <p v-highlight3="'orange'">Highlight Three, no arg</p>
+
             </div>
         </div>
     </div>

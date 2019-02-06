@@ -15,6 +15,17 @@ Vue.directive('highlight2', {
   }
 });
 
+Vue.directive('highlight3', {
+  bind(el, binding, vnode) {
+    el.style.color = 'white';
+    if (binding.arg === 'background') {
+      el.style.backgroundColor = binding.value;
+    } else {
+      el.style.color = binding.value;
+    }
+  }
+});
+
 new Vue({
   el: '#app',
   render: h => h(App)
