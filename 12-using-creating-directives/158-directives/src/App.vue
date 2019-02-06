@@ -27,6 +27,8 @@
                 <h1>Local Directives</h1>
                 <p v-local-highlight:background.delayed.blink="'purple'">Local directive</p>
 
+                <p v-local-highlight2:background.delayed.blink="{mainColor:'red',secondColor:'green', delay:500}">Local directive 2</p>
+
             </div>
         </div>
     </div>
@@ -35,6 +37,44 @@
 <script>
     export default {
         directives: {
+            'local-highlight2': {
+                bind(el, binding, vnode) {
+                    var delay = 0;
+                    if (binding.modifiers['delayed']) {
+                        delay = 3000;
+                    }
+
+                    if (binding.modifiers['blink']) {
+                        console.log('yes to blink');
+                        let mainColor = binding.value.mainColor;
+                        let secondColor = binding.value.secondColor;
+                        let currentColor = mainColor;
+                        setTimeout( () =>{
+
+                            setInterval(() => {
+                                currentColor == mainColor ? currentColor = secondColor : currentColor = mainColor;
+
+                                el.style.color = 'white';
+                                if (binding.arg === 'background') {
+                                    el.style.backgroundColor = currentColor;
+                                } else {
+                                    el.style.color = currentColor;
+                                }
+                            }, binding.value.delay);
+                        }, delay);
+                    } else {
+
+                        setTimeout(() => {
+                            el.style.color = 'white';
+                            if (binding.arg === 'background') {
+                                el.style.backgroundColor = binding.value.mainColor;
+                            } else {
+                                el.style.color = binding.value.mainColor;
+                            }
+                        }, delay);
+                    }
+                }
+            },
             'local-highlight': {
                 bind(el, binding, vnode) {
                     var delay = 0;
