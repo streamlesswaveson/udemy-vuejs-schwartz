@@ -12,5 +12,8 @@ export const fruitMixin = {
                 return el.match(this.filterText);
             })
         }
+    },
+    created() {
+        console.log('mixin created');
     }
 };

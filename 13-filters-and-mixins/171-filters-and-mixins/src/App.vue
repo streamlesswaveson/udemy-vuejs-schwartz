@@ -36,6 +36,9 @@
         },
         components: {
             appList: List
+        },
+        created() {
+            console.log('app created');
         }
     }
 </script>
