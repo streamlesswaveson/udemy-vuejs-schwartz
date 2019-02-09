@@ -6,6 +6,8 @@
                 <!-- chained filters -->
                 <p>{{text | toUpperCase | toLowerCase}}</p>
                 <hr>
+                <!-- for mixins, each component gets its own copy of the mixin's data -->
+                <button @click="fruits.push('Berries')">Add New Item</button>
                 <input v-model="filterText">
                 <ul>
                     <li v-for="fruit in filteredFruits">{{fruit}}</li>
