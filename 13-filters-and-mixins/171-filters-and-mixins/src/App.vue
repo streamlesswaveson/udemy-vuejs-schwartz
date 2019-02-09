@@ -11,32 +11,31 @@
                     <li v-for="fruit in filteredFruits">{{fruit}}</li>
                 </ul>
 
+                <hr>
+                <app-list></app-list>
+
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {fruitMixin} from "./fruitMixin";
+    import List from './List.vue';
     export default {
+        mixins: [fruitMixin],
         data() {
             return {
-                text: 'Hello There',
-                fruits: ['Apple', 'Mango', 'Banana', 'Melon'],
-                filterText: ''
-            }
-        },
-        // for more complex transformations use a computed property
-        computed: {
-            filteredFruits() {
-                return this.fruits.filter((el) => {
-                    return el.match(this.filterText);
-                })
+                text: 'Hello There'
             }
         },
         filters: {
             toUpperCase(value) {
                 return value.toUpperCase();
             }
+        },
+        components: {
+            appList: List
         }
     }
 </script>
