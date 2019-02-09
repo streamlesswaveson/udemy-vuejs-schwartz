@@ -5,6 +5,11 @@
                 <h1>Filters & Mixins</h1>
                 <!-- chained filters -->
                 <p>{{text | toUpperCase | toLowerCase}}</p>
+                <hr>
+                <input v-model="filterText">
+                <ul>
+                    <li v-for="fruit in filteredFruits">{{fruit}}</li>
+                </ul>
 
             </div>
         </div>
@@ -15,7 +20,17 @@
     export default {
         data() {
             return {
-                text: 'Hello There'
+                text: 'Hello There',
+                fruits: ['Apple', 'Mango', 'Banana', 'Melon'],
+                filterText: ''
+            }
+        },
+        // for more complex transformations use a computed property
+        computed: {
+            filteredFruits() {
+                return this.fruits.filter((el) => {
+                    return el.match(this.filterText);
+                })
             }
         },
         filters: {
