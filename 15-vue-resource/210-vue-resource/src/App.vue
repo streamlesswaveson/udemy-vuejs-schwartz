@@ -21,7 +21,12 @@
     export default {
         methods: {
           submit() {
-              console.log(this.user);
+              this.$http.post('http://localhost:8099/api/user', this.user)
+                  .then(response => {
+                      console.log(response);
+                  }, error => {
+                      console.error(error);
+                  });
           }
         },
         data() {
